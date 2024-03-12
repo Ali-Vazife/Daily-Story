@@ -1,10 +1,12 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars')
 const passport = require('passport');
 const session = require('express-session')
+const MongoStore = require('connect-mongo');
 
 const connectDB = require('./config/db');
 
@@ -24,17 +26,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebars
-// app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
-// app.set('view engine', '.hbs')
-// app.set('views', './views');
-
-
-
-// app.engine('.hbs', handlebars.engine({ defaultLayout: 'main', extname: '.hbs' }));
-// // app.engine('handlebars', engine());
-// app.set('view engine', 'handlebars');
-// app.set("views", "./views");
-
 app.engine('.hbs', exphbs.engine({
   defaultLayout: 'main',
   extname: '.hbs',
@@ -47,7 +38,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(session({
   secret: 'keyboard cow',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MongoStore({ mongoUrl: process.env.DB_STRING })
 }))
 
 // Passport middleware
@@ -60,6 +52,7 @@ app.use(express.static(path.join(__dirname
 
 // Routes
 app.use('/', require('./routes/index'));
+app.use('/auth', require('./routes/auth'));
 
 const PORT = process.env.PORT || 3000;
 
