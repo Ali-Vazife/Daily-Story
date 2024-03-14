@@ -7,3 +7,33 @@ p {
   margin-top: 50px;
   text-align: center;
 }
+
+.fa-small {
+  font-size: 16px !important;
+}
+
+.btn-float {
+  float: left;
+  margin-right: 10px;
+}
+
+.img-small {
+  width: 180px;
+}
+
+.fa-large {
+  font-size: 26px !important;
+}
+
+.input-group {
+  display: table;
+  width: 100%;
+}
+.input-group .input-field,
+.input-group .input-group-addon {
+  display: table-cell;
+}
+
+.search-form {
+  margin: 70px 0;
+}

@@ -20,16 +20,41 @@ connectDB();
 
 const app = express();
 
+// Body parser
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Set global variable
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null
+  next()
+})
+
 // Logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Handlebars Helper
+const {
+  formatDate,
+  stripTags,
+  truncate,
+  editIcon,
+  select,
+} = require('./helpers/hbs')
+
 // Handlebars
 app.engine('.hbs', exphbs.engine({
+  helpers: {
+    formatDate, stripTags,
+    truncate,
+    editIcon,
+    select,
+  },
   defaultLayout: 'main',
   extname: '.hbs',
-  layoutsDir: path.join(__dirname, 'views/layouts')
+  // layoutsDir: path.join(__dirname, 'views')
 }));
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +78,7 @@ app.use(express.static(path.join(__dirname
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
+app.use('/stories', require('./routes/stories'));
 
 const PORT = process.env.PORT || 3000;
 
