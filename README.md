@@ -1,6 +1,6 @@
 # DailyStory App
 
-This project is a full-stack application implementation of the DailyStory app, a platform designed for users to create and share stories. Utilizing Node.js, Express, MongoDB, Passport with a Google OAuth strategy, and more, DailyStory offers a seamless experience for both content creators and readers.
+StoryBooks is a platform designed for users to create and share stories, utilizing Node.js, Express, MongoDB, Passport with a Google OAuth strategy, and more. It offers a seamless experience for both content creators and readers.
 
 ## Introduction
 
@@ -19,3 +19,6 @@ The Daily Story app provides a user-friendly interface for creating, managing, a
 ## Project Video
 
 ![GIF](projectVideo/projectVideo.gif)
+
+-------------------------------------------------------------
+This project is a practice exercise where I developed the backend of the StoryBooks app. The frontend components were sourced from the internet.
