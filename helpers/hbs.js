@@ -18,9 +18,9 @@ module.exports = {
     return input.replace(/<(?:.|\n)*?>/gm, '')
   },
   editIcon: function (storyUser, loggedUser, storyId, floating = true) {
-    console.log('storyUser', storyUser);
+    console.log('storyUser', storyUser._id);
     console.log('loggedUser', loggedUser);
-    console.log('storyId', storyId);
+    // console.log('storyId', storyId);
     if (storyUser._id.toString() == loggedUser.toString()) {
       if (floating) {
         return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
