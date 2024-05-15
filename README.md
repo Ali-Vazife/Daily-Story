@@ -1,6 +1,6 @@
 # DailyStory App
 
-StoryBooks is a platform designed for users to create and share stories, utilizing Node.js, Express, MongoDB, Passport with a Google OAuth strategy, and more. It offers a seamless experience for both content creators and readers.
+StoryBooks is a platform designed for users to create and share stories, utilizing **Node.js, Express, MongoDB, Passport** with a **Google OAuth strategy**, and more. It offers a seamless experience for both content creators and readers.
 
 ## Introduction
 
